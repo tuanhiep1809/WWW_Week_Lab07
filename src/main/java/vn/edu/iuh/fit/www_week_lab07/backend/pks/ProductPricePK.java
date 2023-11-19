@@ -9,6 +9,8 @@ import java.time.LocalDateTime;
 
 @Setter @Getter
 public class ProductPricePK implements Serializable {
-    private Product product;
+    private long product;
     private LocalDateTime price_date_time;
+
+
 }

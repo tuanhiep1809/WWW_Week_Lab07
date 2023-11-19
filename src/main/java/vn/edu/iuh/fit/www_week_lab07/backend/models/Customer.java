@@ -27,7 +27,12 @@ public class Customer {
     @OneToMany(mappedBy = "customer")
     private List<Order> orderList;
 
+
     public Customer() {
+    }
+
+    public Customer(long id) {
+        this.id = id;
     }
 
     public Customer(String name, String email, String phone, String address) {

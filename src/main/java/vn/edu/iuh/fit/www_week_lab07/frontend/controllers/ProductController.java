@@ -24,6 +24,7 @@ public class ProductController {
     @Autowired
     private ProductRepository productRepository;
 
+
     @GetMapping("/products")
     public String showProductListPaging(
             HttpSession session,
@@ -45,8 +46,19 @@ public class ProductController {
                     .collect(Collectors.toList());
             model.addAttribute("pageNumbers", pageNumbers);
         }
+        List<Product> products = productRepository.findAll();
+        model.addAttribute("products", products);
         return "admin/product/listing";
     }
+    @GetMapping("/products/add")
+    public String AddProduct(
+            HttpSession session,
+            Model model
+           ) {
+
+        return "admin/product/listing";
+    }
+
 
     @GetMapping("/products/show-add-form")
     public String add(Model model) {
@@ -63,8 +75,8 @@ public class ProductController {
         return "redirect:/admin/products";
     }
 
-    //    @DeleteMapping("/products/delete/{id}")
-    @GetMapping("/products/delete/{id}")
+        @DeleteMapping("/products/delete/{id}")
+//    @GetMapping("/products/delete/{id}")
     public String addCandidate(@PathVariable("id") long id) {
         Product product = productRepository.findById(id).orElse(new Product());
         productRepository.delete(product);

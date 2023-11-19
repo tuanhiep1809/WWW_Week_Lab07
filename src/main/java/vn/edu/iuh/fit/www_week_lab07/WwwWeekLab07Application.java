@@ -7,12 +7,13 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import vn.edu.iuh.fit.www_week_lab07.backend.enums.EmployeeStatus;
 import vn.edu.iuh.fit.www_week_lab07.backend.enums.ProductStatus;
-import vn.edu.iuh.fit.www_week_lab07.backend.models.Customer;
-import vn.edu.iuh.fit.www_week_lab07.backend.models.Product;
-import vn.edu.iuh.fit.www_week_lab07.backend.repositories.CustomerRepository;
-import vn.edu.iuh.fit.www_week_lab07.backend.repositories.ProductRepository;
+import vn.edu.iuh.fit.www_week_lab07.backend.models.*;
+import vn.edu.iuh.fit.www_week_lab07.backend.repositories.*;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Random;
 
 @SpringBootApplication
@@ -27,20 +28,90 @@ public class WwwWeekLab07Application {
     private ProductRepository productRepository;
     @Autowired
     private CustomerRepository customerRepository;
-    @Bean
-    CommandLineRunner createListCus(){
-        return args -> {
-            for(int i=0;i<10;i++){
-                Customer customer = new Customer(
-                        "hiep"+i,
-                        "hiep"+i+"@gmail.com",
-                        "0123456789",
-                        "hcm"
-                );
-                customerRepository.save(customer);
-            }
-        };
-    }
+    @Autowired
+    private EmployeeRepository employeeRepository;
+    @Autowired
+    private OrderDetailRepository orderDetailRepository;
+    @Autowired
+    private OrderRepository orderRepository;
+    @Autowired
+    private ProductImageRepository productImageRepository;
+    @Autowired
+    private ProductPriceRepository  productPriceRepository;
+//    @Bean
+//    CommandLineRunner createListProPrice(){
+//        return args -> {
+//            for(int i=0;i<10;i++){
+//                ProductPrice pp = new ProductPrice(
+//
+//                        new Product(i+211),
+//                                LocalDateTime.of(2021,10,10,10,10+i,10),
+//                                1000+i,
+//                                "note"+i
+//                );
+//                productPriceRepository.save(pp);
+////                System.out.println(pp);
+//            }
+//        };
+//    }
+//    @Bean
+//    CommandLineRunner createListProImage(){
+//        return args -> {
+//            for(int i=0;i<10;i++){
+//                ProductImage pi = new ProductImage(
+//                        "aaaaPath"+i,
+//                        "aaaaalternative"+i,
+//                        new Product(i+211)
+//                );
+//               productImageRepository.save(pi);
+//            }
+//        };
+//    }
+//    @Bean
+//    CommandLineRunner createListOrder(){
+//        return args -> {
+//            for(int i=0;i<10;i++){
+//                Order order = new Order(
+//                        LocalDateTime.of(2021,10,10,10,10,10),
+//                       new Employee(i+11),
+//                        new Customer(i+1)
+//                        );
+//                orderRepository.save(order);
+//            }
+//        };
+//    }
+//    @Bean
+//    CommandLineRunner createListEmp(){
+//        return args -> {
+//            for(int i=0;i<10;i++){
+//                Employee employee = new Employee(
+//                        "hiep"+i,
+//                        LocalDate.of(1999,10,10),
+//                        "HiepEmp"+i+"@gmail.com",
+//                        "0123456789",
+//                        "hcm",
+//                        EmployeeStatus.ACTIVE
+//                        );
+//
+//               employeeRepository.save(employee);
+//            }
+//        };
+//    }
+
+//    @Bean
+//    CommandLineRunner createListCus(){
+//        return args -> {
+//            for(int i=0;i<10;i++){
+//                Customer customer = new Customer(
+//                        "hiep"+i,
+//                        "hiep"+i+"@gmail.com",
+//                        "0123456789",
+//                        "hcm"
+//                );
+//                customerRepository.save(customer);
+//            }
+//        };
+//    }
 
 //        @Bean
 //        CommandLineRunner createSampleProducts(){
@@ -48,7 +119,7 @@ public class WwwWeekLab07Application {
 //            Faker faker =new Faker();
 //            Random rnd = new Random();
 //            Device devices = faker.device();
-//            for (int i = 0; i < 10; i++) {
+//            for (int i = 240; i < 400; i++) {
 //                Product product =new Product(
 //                        devices.modelName(),
 //                        faker.lorem().paragraph(30),

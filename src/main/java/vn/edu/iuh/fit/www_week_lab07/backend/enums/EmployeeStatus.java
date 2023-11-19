@@ -1,9 +1,9 @@
 package vn.edu.iuh.fit.www_week_lab07.backend.enums;
 
 public enum EmployeeStatus {
-    ACTIVE(1),
-    IN_ACTIVE(0),
-    TERMINATED(-1);
+    ACTIVE(0),
+    IN_ACTIVE(1),
+    TERMINATED(2);
     private int value;
 
     EmployeeStatus(int value) {

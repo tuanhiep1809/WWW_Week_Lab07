@@ -45,6 +45,10 @@ public class Employee {
     public Employee() {
     }
 
+    public Employee(long id) {
+        this.id = id;
+    }
+
     public Employee(String fullname, LocalDate dob, String email, String phone, String address, EmployeeStatus status) {
         this.fullname = fullname;
         this.dob = dob;
